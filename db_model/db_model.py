@@ -1,7 +1,7 @@
 # importing flask module
 from flask_sqlalchemy import SQLAlchemy
 
-from  config import flask_config
+from config import flask_config
 
 
 
@@ -20,6 +20,9 @@ flask_config.app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(flask_config.app)
 
+#define here for easier table creation
+
+season = "2017"
 
 class NBA_Teams(db.Model):
     __tablename__ = "nba_teams"
@@ -41,3 +44,98 @@ class Teams_player_played_for(db.Model):
     past_team_id = db.Column(db.Integer)
     seasonStart = db.Column(db.Integer)
     seasonEnd = db.Column(db.Integer)
+
+class player_season_per_game(db.Model):
+    __tablename__ = season + "_season_per_game"
+
+    index = db.Column(db.Integer, primary_key=True)
+    player_count = db.Column(db.Integer)
+    league_id = db.Column(db.Integer)
+    season_id = db.Column(db.String(20))
+    player_id = db.Column(db.Integer)
+    pos = db.Column(db.String(10))
+    first_name = db.Column(db.String(30))
+    last_name = db.Column(db.String(30))
+    team_id = db.Column(db.Integer)
+    team_abbreviation = db.Column(db.String(4))
+    yearsPro = db.Column(db.Integer)
+    player_age = db.Column(db.Integer)
+    gp = db.Column(db.Integer)
+    gs = db.Column(db.Integer)
+    min = db.Column(db.Float(4, 2))
+    fga = db.Column(db.Float(4, 2))
+    fgm = db.Column(db.Float(4, 2))
+    fg_pct = db.Column(db.Float(4, 3))
+    fg3m = db.Column(db.Float(4, 2))
+    fg3a = db.Column(db.Float(4, 2))
+    fg3_pct = db.Column(db.Float(4, 3))
+    ftm = db.Column(db.Float(4, 2))
+    fta = db.Column(db.Float(4, 2))
+    ft_pct = db.Column(db.Float(4, 2))
+    oreb = db.Column(db.Float(4, 2))
+    dreb = db.Column(db.Float(4, 2))
+    reb = db.Column(db.Float(4, 2))
+    ast = db.Column(db.Float(4, 2))
+    stl = db.Column(db.Float(4, 2))
+    blk = db.Column(db.Float(4, 2))
+    tov = db.Column(db.Float(4, 2))
+    pf = db.Column(db.Float(4, 2))
+    pts = db.Column(db.Float(4, 2))
+
+
+class player_season_totals(db.Model):
+    __tablename__ = season + "_season_totals"
+
+    index = db.Column(db.Integer, primary_key=True)
+    player_count = db.Column(db.Integer)
+    league_id = db.Column(db.Integer)
+    season_id = db.Column(db.String(20))
+    player_id = db.Column(db.Integer)
+    pos = db.Column(db.String(10))
+    first_name = db.Column(db.String(30))
+    last_name = db.Column(db.String(30))
+    team_id = db.Column(db.Integer)
+    team_abbreviation = db.Column(db.String(4))
+    yearsPro = db.Column(db.Integer)
+    player_age = db.Column(db.Integer)
+    gp = db.Column(db.Integer)
+    gs = db.Column(db.Integer)
+    min = db.Column(db.Integer)
+    fga = db.Column(db.Integer)
+    fgm = db.Column(db.Integer)
+    fg_pct = db.Column(db.Float(4, 3))
+    fg3m = db.Column(db.Integer)
+    fg3a = db.Column(db.Integer)
+    fg3_pct = db.Column(db.Float(4, 3))
+    ftm = db.Column(db.Integer)
+    fta = db.Column(db.Integer)
+    ft_pct = db.Column(db.Float(4, 3))
+    oreb = db.Column(db.Integer)
+    dreb = db.Column(db.Integer)
+    reb = db.Column(db.Integer)
+    ast = db.Column(db.Integer)
+    stl = db.Column(db.Integer)
+    blk = db.Column(db.Integer)
+    tov = db.Column(db.Integer)
+    pf = db.Column(db.Integer)
+    pts = db.Column(db.Integer)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
