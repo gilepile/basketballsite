@@ -1,3 +1,4 @@
+from config import db_scripts_config
 from db_model import db_model
 from helpers import  request_helper
 
@@ -5,8 +6,8 @@ import requests
 
 table_record = []
 
-endpoint_players = "http://data.nba.net/prod/v1/2016/players.json"
-season = "2015-16"
+endpoint_players = db_scripts_config.endpoint_players
+season =  db_scripts_config.season
 
 players = requests.get(endpoint_players)
 jsondata_players = players.json()

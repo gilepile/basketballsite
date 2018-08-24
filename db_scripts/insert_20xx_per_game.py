@@ -1,3 +1,4 @@
+from config import db_scripts_config
 from db_model import db_model
 from helpers import  request_helper
 
@@ -5,8 +6,8 @@ import requests
 
 table_record = []
 
-endpoint_players = "http://data.nba.net/prod/v1/2018/players.json"
-season = "2017-18"
+endpoint_players = db_scripts_config.endpoint_players
+season =  db_scripts_config.season
 
 resp_players = requests.get(endpoint_players)
 jsondata_players = resp_players.json()
@@ -15,7 +16,7 @@ numOfPlayers = len(jsondata_players["league"]["standard"])
 print("Number of players is: ", numOfPlayers)
 global player_id
 
-endpoint_per_game = "https://stats.nba.com/stats/playercareerstats"
+endpoint_per_game = db_scripts_config.endpoint_per_game
 
 i = 0
 rowsInserted = 0

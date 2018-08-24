@@ -1,7 +1,9 @@
 # importing flask module
 from flask_sqlalchemy import SQLAlchemy
 
+from config import db_scripts_config
 from config import flask_config
+
 
 
 
@@ -22,7 +24,6 @@ db = SQLAlchemy(flask_config.app)
 
 #define here for easier table creation
 
-season = "2018"
 
 class NBA_Teams(db.Model):
     __tablename__ = "nba_teams"
@@ -46,7 +47,7 @@ class Teams_player_played_for(db.Model):
     seasonEnd = db.Column(db.Integer)
 
 class player_season_per_game(db.Model):
-    __tablename__ = season + "_season_per_game"
+    __tablename__ = db_scripts_config.year_start + "_season_per_game"
 
     index = db.Column(db.Integer, primary_key=True)
     player_count = db.Column(db.Integer)
@@ -84,7 +85,7 @@ class player_season_per_game(db.Model):
 
 
 class player_season_totals(db.Model):
-    __tablename__ = season + "_season_totals"
+    __tablename__ = db_scripts_config.year_start + "_season_totals"
 
     index = db.Column(db.Integer, primary_key=True)
     player_count = db.Column(db.Integer)
