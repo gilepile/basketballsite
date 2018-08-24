@@ -22,7 +22,7 @@ db = SQLAlchemy(flask_config.app)
 
 #define here for easier table creation
 
-season = "2017"
+season = "2018"
 
 class NBA_Teams(db.Model):
     __tablename__ = "nba_teams"

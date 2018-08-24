@@ -5,8 +5,8 @@ import requests
 
 table_record = []
 
-endpoint_players = "http://data.nba.net/prod/v1/2016/players.json"
-season = "2015-16"
+endpoint_players = "http://data.nba.net/prod/v1/2017/players.json"
+season = "2016-17"
 
 players = requests.get(endpoint_players)
 jsondata_players = players.json()
@@ -63,6 +63,7 @@ while (i < (numOfPlayers)):
 
             season_data_row = jsondata_per_game["resultSets"][0]["rowSet"][season_position]
 
+            counter += 1
 
             season_id_from_response = season_data_row[1]
 
@@ -104,6 +105,5 @@ while (i < (numOfPlayers)):
             if(season_id_from_response == season):
                 db_model.db.session.add(player_row)
                 db_model.db.session.commit()
-                counter += 1
 
     i += 1
