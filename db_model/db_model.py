@@ -35,6 +35,27 @@ class NBA_Teams(db.Model):
     tricode = db.Column(db.String(40))
 
 
+class players_for_20xx_season(db.Model):
+    __tablename__ = "players_for_" + db_scripts_config.season
+
+    index = db.Column(db.Integer, primary_key=True)
+    player_count = db.Column(db.Integer)
+    first_name = db.Column(db.String(30))
+    last_name = db.Column(db.String(30))
+    player_id = db.Column(db.Integer)
+    team_id = db.Column(db.Integer)
+    jersey = db.Column(db.Integer)
+    pos = db.Column(db.String(10))
+    heightFeet = db.Column(db.Integer)
+    heightInches = db.Column(db.Float(6, 3))
+    heightMeters = db.Column(db.Float(6, 3))
+    weightPounds = db.Column(db.Float(6, 3))
+    weightKilograms = db.Column(db.Float(6, 3))
+    dateOfBirthUTC = db.Column(db.String(30))
+    nbaDebutYear = db.Column(db.Integer)
+    yearsPro = db.Column(db.Integer)
+    lastAffiliation = db.Column(db.String(60))
+    country = db.Column(db.String(60))
 
 class Teams_player_played_for(db.Model):
     __tablename__ = "teams_player_played_for"
@@ -47,7 +68,7 @@ class Teams_player_played_for(db.Model):
     seasonEnd = db.Column(db.Integer)
 
 class player_season_per_game(db.Model):
-    __tablename__ = db_scripts_config.year_start + "_season_per_game"
+    __tablename__ = db_scripts_config.season_start + "_season_per_game"
 
     index = db.Column(db.Integer, primary_key=True)
     player_count = db.Column(db.Integer)
@@ -85,7 +106,7 @@ class player_season_per_game(db.Model):
 
 
 class player_season_totals(db.Model):
-    __tablename__ = db_scripts_config.year_start + "_season_totals"
+    __tablename__ = db_scripts_config.season_start + "_season_totals"
 
     index = db.Column(db.Integer, primary_key=True)
     player_count = db.Column(db.Integer)

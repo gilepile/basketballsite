@@ -1,12 +1,13 @@
+from config import end_points
 from config import db_scripts_config
 from db_model import db_model
-from helpers import  request_helper
+from helpers import request_helper
 
 import requests
 
 table_record = []
 
-endpoint_players = db_scripts_config.endpoint_players
+endpoint_players = end_points.players_for_season
 season =  db_scripts_config.season
 
 players = requests.get(endpoint_players)

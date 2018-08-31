@@ -1,4 +1,4 @@
-CREATE TABLE `flaskTutorial`.`2015_season_totals` (
+CREATE TABLE `flaskTutorial`.`2018_season_totals` (
   `index` INT NOT NULL AUTO_INCREMENT,
   `player_count` INT NULL,
   `league_id` INT NULL,

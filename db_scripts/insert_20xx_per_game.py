@@ -1,3 +1,4 @@
+from config import end_points
 from config import db_scripts_config
 from db_model import db_model
 from helpers import  request_helper
@@ -6,8 +7,8 @@ import requests
 
 table_record = []
 
-endpoint_players = db_scripts_config.endpoint_players
-season =  db_scripts_config.season
+endpoint_players = end_points.players_for_season
+season = db_scripts_config.season
 
 resp_players = requests.get(endpoint_players)
 jsondata_players = resp_players.json()
@@ -16,7 +17,7 @@ numOfPlayers = len(jsondata_players["league"]["standard"])
 print("Number of players is: ", numOfPlayers)
 global player_id
 
-endpoint_per_game = db_scripts_config.endpoint_per_game
+endpoint_per_game = end_points.player_stats
 
 i = 0
 rowsInserted = 0

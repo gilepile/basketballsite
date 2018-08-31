@@ -1,2 +1,9 @@
 teams_player_played_for   will be used for individual player stats
 
+
+
+design:
+
+20xx_season_per_game and 20xx_season_totals tables are staying as they are.  They will be  used separately
+
+Players_for_20xx and player_game_log_20xx tables will be used to display data for players for last X games
