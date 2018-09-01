@@ -28,7 +28,7 @@ while i < numOfPlayers:
     last_name = jsondata_players["league"]["standard"][i]["lastName"]
     player_id = jsondata_players["league"]["standard"][i]["personId"]
     team_id = jsondata_players["league"]["standard"][i]["teamId"]
-    if team_id != "":
+    if team_id != "" and len(team_id) <= 10:
         team_id = team_id
     else:
         team_id = None
@@ -90,10 +90,21 @@ while i < numOfPlayers:
     else:
         yearsPro = 0
 
-    lastAffiliation = jsondata_players["league"]["standard"][i]["lastAffiliation"]
+    # 2016 or earlier do not have lastAffiliation
+    try:
+        lastAffiliation = jsondata_players["league"]["standard"][i]["lastAffiliation"]
+    except (KeyError, NameError):
+        lastAffiliation = None
+
     country = jsondata_players["league"]["standard"][i]["country"]
 
-    if jsondata_players["league"]["standard"][i]["isActive"]:
+    # 2016 or earlier do not have isActive
+    try:
+        isActive = jsondata_players["league"]["standard"][i]["isActive"]
+    except (KeyError, NameError):
+        isActive = True  # if key is not present, it means we are in earlier seasons, add all players
+
+    if isActive:
         player_row = db_model.players_for_20xx_season(
             player_count=counter,
             first_name=first_name,
